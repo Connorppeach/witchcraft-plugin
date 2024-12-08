@@ -1,4 +1,11 @@
-{:paths [#_"my_mods"]
- :deps {com.lambdaisland/witchcraft {{witchcraft-coords}}
+{:paths [["plugins/witchcraft"]]
+ 
+ :mvn/repos {"mrepo" {:url "https://repo.repsy.io/mvn/connorppeach/default"
+                     :releases {:enabled true
+                                :update :daily}
+                     :snapshots {#_same_as_releases}}}
+ :mvn/local-repo ".cache/maven/repository"
+ :deps {com.lambdaisland/witchcraft {:mvn/version "0.38.12"}
         refactor-nrepl/refactor-nrepl {:mvn/version "2.5.1"}
         cider/cider-nrepl {:mvn/version "0.26.0"}}}
+

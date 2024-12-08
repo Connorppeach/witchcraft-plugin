@@ -38,6 +38,7 @@
         (yaml-str
          {:main "com.lambdaisland.witchcraft.ClojurePlugin"
           :name "Witchcraft"
+          :folia-supported true
           :version version
           :author "lambdaisland"
           :description "Bootstrap Clojure/nREPL/Witchcraft"
@@ -71,7 +72,7 @@
           [:aliases :witchcraft :extra-deps 'com.lambdaisland/witchcraft]))
 
 (defn build [{:keys [env api-version server] :as params
-              :or {api-version "1.17"
+              :or {api-version "1.21"
                    server 'paper}}]
   (let [basis (b/create-basis {:project "deps.edn"
                                :aliases [(keyword "mc" (str server "-" api-version))]})
@@ -109,7 +110,4 @@
   params)
 
 (defn build-all [& _]
-  (build '{:server glowstone :api-version 1.12})
-  (build '{:server paper :api-version 1.17})
-  (build '{:server paper :api-version 1.18})
-  (build '{:server spigot :api-version 1.17}))
+  (build '{:server paper :api-version 1.21}))

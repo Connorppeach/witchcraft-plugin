@@ -5,14 +5,13 @@
  {:dev
   {:extra-paths ["dev" "repl_sessions"]}
 
-  :licp {:extra-deps {com.lambdaisland/classpath {:mvn/version "0.0.27"}}}
+  :licp {:extra-deps {com.lambdaisland/classpath {:mvn/version "LATEST"}}}
 
-  :witchcraft {:extra-deps {com.lambdaisland/witchcraft {:mvn/version "RELEASE"}}}
+  :witchcraft {:extra-deps {com.lambdaisland/witchcraft  {:git/url "https://github.com/Connorppeach/witchcraft"
+                                                :git/sha "25831d611c3b2755551e5a9ae810082bce01d14f"
+                                                :git/branch "main"}}}
 
-  :mc/glowstone-1.12 {:extra-deps {net.glowstone/glowstone {:mvn/version "2021.8.0"}}}
-  :mc/paper-1.17 {:extra-deps {io.papermc.paper/paper-api {:mvn/version "1.17.1-R0.1-SNAPSHOT"}}}
-  :mc/paper-1.18 {:extra-deps {io.papermc.paper/paper-api {:mvn/version "1.18-rc3-R0.1-SNAPSHOT"}}}
-  :mc/spigot-1.17 {:extra-deps {org.spigotmc/spigot-api {:mvn/version "1.17.1-R0.1-SNAPSHOT"}}}
+  :mc/paper-1.21 {:extra-deps {io.papermc.paper/paper-api {:mvn/version "1.21.1-R0.1-SNAPSHOT"}}}
 
   ;; :mc/paper     {:extra-deps {io.papermc/paper {:local/root "/home/arne/Downloads/paper-1.17.1-157.jar"}}}
   ;; :mc/paperclip {:extra-deps {io.papermc/paperclip {:mvn/version "2.0.1"}}}
@@ -42,7 +41,6 @@
                  shade/shade {:mvn/version "0.4.0"}}
    :ns-default  build-plugin
    :exec-fn build-all}}
-
  :mvn/repos
  {"glowstone-repo" {:url "https://repo.glowstone.net/content/repositories/snapshots/"}
   "aikar"          {:url "https://repo.aikar.co/nexus/content/repositories/aikar-release/"}

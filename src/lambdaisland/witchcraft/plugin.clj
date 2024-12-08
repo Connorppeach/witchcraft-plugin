@@ -37,12 +37,18 @@
     (log-info "No" config-file "found, creating default.")
     (.mkdirs (io/file (.getParent config-file)))
     (spit config-file (slurp (io/resource "witchcraft_plugin/default_config.edn"))))
+  (let [{:keys [preinit nrepl init deps] :as config} (read-config)]
 
-  (let [{:keys [nrepl init deps] :as config} (read-config)]
+  (doseq [form preinit]
+      (log-info "preinit:" (pr-str form))
+      (try
+        (eval form)
+        (catch Throwable e
+          (log-error e "PreInit form failed to evaluate:" (pr-str form)))))
+
     (when (and deps (not (.exists (io/file "deps.edn"))))
       (log-info "No deps.edn found, creating default.")
       (spit "deps.edn" (slurp (io/resource "witchcraft_plugin/default_deps.edn"))))
-
     (when deps
       (log-info "Loading deps.edn" (when (map? deps) (str "with " (pr-str deps))))
       @(cp/update-classpath! (if (map? deps) deps {})))

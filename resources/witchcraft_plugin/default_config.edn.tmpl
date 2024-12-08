@@ -27,7 +27,9 @@
  :require [lambdaisland.witchcraft
            lambdaisland.witchcraft.paper]
 
- ;; Finally these expressions are evaluated.
+:preinit []
+
+;; Finally these expressions are evaluated.
  :init
  [(lambdaisland.witchcraft/init-xmaterial!)
   (alter-var-root #'lambdaisland.witchcraft/server-type (constantly :paper))]}
